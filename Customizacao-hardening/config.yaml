@@ -1,0 +1,37 @@
+# Configuração global do projeto
+project:
+  name: "Customização e Hardening"
+  version: "2.0.0"
+  author: "Rafael Marzulo"
+  
+logging:
+  level: "INFO"  # DEBUG, INFO, WARN, ERROR, FATAL
+  directory: "/var/log/hardening"
+  retention_days: 30
+  
+backup:
+  directory: "/var/backups/hardening"
+  retention_days: 30
+  compression: true
+  
+ssh:
+  port: 22
+  allow_root: false
+  password_auth: false
+  key_auth: true
+  max_auth_tries: 3
+  client_alive_interval: 300
+  
+security:
+  clamav:
+    scan_schedule: "0 2 * * *"  # 2:00 AM daily
+    quarantine_dir: "/var/quarantine"
+    
+  firewall:
+    default_policy: "deny"
+    allowed_ports: [22, 80, 443]
+    
+monitoring:
+  enabled: true
+  alert_email: "admin@example.com"
+  check_interval: 300  # 5 minutes

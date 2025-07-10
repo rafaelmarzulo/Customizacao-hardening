@@ -1,0 +1,41 @@
+# Logs
+*.log
+logs/
+/var/log/
+
+# Backups
+*.bak
+*.backup
+/var/backups/
+
+# Temporários
+*.tmp
+*.temp
+/tmp/
+
+# Configurações locais
+config.local.yaml
+local.yaml
+.env
+.env.local
+
+# Testes
+test-results/
+coverage/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos compilados
+*.o
+*.so
+*.dylib
+*.zip
