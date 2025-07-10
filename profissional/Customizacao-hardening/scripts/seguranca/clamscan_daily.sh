@@ -1,7 +1,9 @@
-#!/usr/bin/env bash
-# Varredura ClamAV - Diária Otimizada
+#!/bin/bash
+# scripts/seguranca/clamscan_daily.sh
+# Descrição: Varredura ClamAV - Diária Otimizada
 # Autor: Rafael Marzulo
-# Versão: 2.1 (Otimizada)
+# Versão: 2.0.0
+# Data: 09/07/2025
 
 set -euo pipefail
 

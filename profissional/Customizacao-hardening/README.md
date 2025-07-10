@@ -1,4 +1,9 @@
+
 # 🛡️ Customização e Hardening - Servidores Linux
+
+![CI](https://github.com/rafaelmarzulo/customizacao-hardening/workflows/CI/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-green.svg)
 
 Este repositório contém uma coleção de scripts para fortalecer a segurança e personalização de servidores Linux, com foco em ambientes corporativos.
 
