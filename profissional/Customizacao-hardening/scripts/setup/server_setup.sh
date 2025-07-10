@@ -1,12 +1,21 @@
-#!/usr/bin/env bash
-# server_setup_essential.sh — Instalação e configuração de ferramentas essenciais
+#!/bin/bash
+# scripts/setup/server_setup.sh
+# Descrição: Instalação e configuração de ferramentas essenciais
 # Compatível com Ubuntu/Debian para servidores em produção
 # Para Rodar no debian primeiro deve instalar os comandos abaixo como root
 # apt install sudo
 # /usr/sbin/usermod -aG sudo debian
+# Autor: Rafael Marzulo
+# Versão: 2.0.0
+# Data: 09/07/2025  
 
 set -euo pipefail
 IFS=$'\n\t'
+
+# Importar bibliotecas
+source "$UTILS_DIR/logger.sh"
+source "$UTILS_DIR/validator.sh"
+source "$UTILS_DIR/backup.sh"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONFIGURAÇÕES INICIAIS

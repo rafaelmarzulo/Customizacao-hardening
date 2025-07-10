@@ -1,8 +1,18 @@
-#!/usr/bin/env bash
-# configura_clamav.sh — Configura logrotate e agendamento diário do ClamAV
-# Compatível com Ubuntu/Debian
+#!/bin/bash
+# scripts/seguranca/envio_config_clamav.sh
+# Descrição: configura_clamav.sh — Configura logrotate e agendamento diário do ClamAV
+# Autor: Rafael Marzulo
+# Versão: 2.0.0
+# Data: 09/07/2025
 
 set -euo pipefail
+
+# Importar bibliotecas
+source "$UTILS_DIR/logger.sh"
+source "$UTILS_DIR/validator.sh"
+source "$UTILS_DIR/backup.sh"
+
+# ─── Configurações ────────────────────────────────────────────────────────
 IFS=$'\n\t'
 
 LOGROTATE_DEST="/etc/logrotate.d/clamav-all"
