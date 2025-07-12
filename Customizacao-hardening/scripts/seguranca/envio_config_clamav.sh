@@ -1,56 +1,20 @@
 #!/bin/bash
-# scripts/seguranca/envio_config_clamav.sh
-# Descrição: configura_clamav.sh — Configura logrotate e agendamento diário do ClamAV
-# Autor: Rafael Marzulo
-# Versão: 2.0.0
-# Data: 09/07/2025
 
-set -euo pipefail
+# 📤 Script: envio_config_clamav.sh
+# Descrição: Envia as configurações do ClamAV para o diretório correto
+# Versão: 1.0.0
 
-# Importar bibliotecas
-source "$UTILS_DIR/logger.sh"
-source "$UTILS_DIR/validator.sh"
-source "$UTILS_DIR/backup.sh"
-
-# ─── Configurações ────────────────────────────────────────────────────────
-IFS=$'\n\t'
-
-LOGROTATE_DEST="/etc/logrotate.d/clamav-all"
-CLAMSCAN_SCRIPT_DEST="/usr/local/bin/clamscan_daily.sh"
-CRON_JOB="0 2 * * * root $CLAMSCAN_SCRIPT_DEST"
-
-# ─── Funções ──────────────────────────────────────────────────────────────
-
-log() { echo -e "[INFO] $*"; }
-error() { echo -e "[ERRO] $*" >&2; exit 1; }
-
-# ─── Etapas ───────────────────────────────────────────────────────────────
-
-log "▶️ Iniciando configuração do ClamAV..."
-
-# 1. Copia configuração do logrotate
-if [[ -f clamav-all ]]; then
-    cp clamav-all "$LOGROTATE_DEST"
-    log "✔️ Arquivo 'clamav-all' instalado em $LOGROTATE_DEST"
-else
-    error "Arquivo clamav-all não encontrado no diretório atual."
+if [[ "${1:-}" == "--help" ]]; then
+  echo "📤  Script de Envio de Configuração do ClamAV"
+  echo "Uso: envio_config_clamav.sh [--help]"
+  echo
+  echo "Este script copia os arquivos de configuração do ClamAV para o sistema."
+  echo
+  echo "Opções:"
+  echo "  --help         Exibe esta mensagem de ajuda"
+  exit 0
 fi
 
-# 2. Copia script clamscan
-if [[ -f clamscan_daily.sh ]]; then
-    cp clamscan_daily.sh "$CLAMSCAN_SCRIPT_DEST"
-    chmod +x "$CLAMSCAN_SCRIPT_DEST"
-    log "✔️ Script 'clamscan_daily.sh' instalado em $CLAMSCAN_SCRIPT_DEST"
-else
-    error "Arquivo clamscan_daily.sh não encontrado no diretório atual."
-fi
-
-# 3. Agendamento no cron (em /etc/crontab)
-if ! grep -qF "$CLAMSCAN_SCRIPT_DEST" /etc/crontab; then
-    echo "$CRON_JOB" >> /etc/crontab
-    log "📆 Agendamento diário adicionado ao /etc/crontab para 02:00"
-else
-    log "ℹ️ O script já está agendado no /etc/crontab"
-fi
-
-log "✅ Configuração do ClamAV concluída."
+cp clamd.conf /etc/clamav/
+cp freshclam.conf /etc/clamav/
+systemctl restart clamav-daemon

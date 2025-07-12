@@ -11,6 +11,7 @@ LOG_DIR := /var/log/$(PROJECT_NAME)
 # Ajuda
 help:
 	@echo "Comandos disponíveis:"
+	@echo "  test-dev    - Testa execução direta dos scripts de desenvolvimento"
 	@echo "  install     - Instalar o projeto no sistema"
 	@echo "  test        - Executar testes"
 	@echo "  lint        - Verificar qualidade do código"
@@ -57,3 +58,16 @@ setup-dev:
 	sudo apt install -y shellcheck yamllint
 	pip3 install pre-commit
 	pre-commit install
+
+
+# Teste de execução direta dos scripts no modo desenvolvimento
+test-dev:
+	@echo "🔍 Testando execução direta dos scripts (modo desenvolvimento)..."
+
+	@echo "➡️  Testando: scripts/hardening/ssh_hardening.sh"
+	@bash scripts/hardening/ssh_hardening.sh --help || echo "⚠️  Ignorando erro esperado se não houver --help implementado."
+
+	@echo "➡️  Testando: scripts/setup/server_setup.sh"
+	@bash scripts/setup/server_setup.sh --help || echo "⚠️  Ignorando erro esperado se não houver --help implementado."
+
+	@echo "✅ Teste de execução direta concluído!"
