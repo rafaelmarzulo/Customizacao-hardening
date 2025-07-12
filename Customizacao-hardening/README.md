@@ -1,69 +1,54 @@
 
 # 🛡️ Customização e Hardening - Servidores Linux
 
-![CI](https://github.com/rafaelmarzulo/customizacao-hardening/workflows/CI/badge.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-2.0.0-green.svg)
+[![CI](https://github.com/rafaelmarzulo/customizacao-hardening/actions/workflows/CI.yml/badge.svg)](https://github.com/rafaelmarzulo/customizacao-hardening/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](https://github.com/rafaelmarzulo/customizacao-hardening/releases)
+[![Shell](https://img.shields.io/badge/shell-bash-blue.svg)](https://www.gnu.org/software/bash/)
+[![Platform](https://img.shields.io/badge/platform-linux-lightgrey.svg)](https://www.linux.org/)
+[![Security](https://img.shields.io/badge/security-hardening-red.svg)](https://github.com/rafaelmarzulo/customizacao-hardening)
 
 Este repositório contém uma coleção de scripts para fortalecer a segurança e personalização de servidores Linux, com foco em ambientes corporativos.
 
-## 📁 Estrutura dos Scripts
+## 📁 Estrutura do Projeto
 
-### 🔐 `hardening_ssh_local.sh`
-- Aplica boas práticas no `sshd_config` local
-- Reforça a segurança do acesso remoto via SSH:
-  - Desabilita login root
-  - Habilita autenticação por chave pública
-  - Valida existência de chave em `~/.ssh/`
+- `scripts/`: Scripts organizados por função (backup, hardening, logs, validações, etc.)
+- `configs/`: Arquivos de configuração usados pelos scripts
+- `docs/`: Documentação complementar
+- `tests/`: Casos de teste e exemplos de uso
+- `Makefile`: Automatização de tarefas (instalação, execução, etc.)
 
-### 🛠️ `server_setup.sh`
-- Script de configuração inicial do servidor:
-  - Atualizações de pacotes
-  - Configurações básicas de rede
-  - Instalação de pacotes essenciais
+## 🚀 Funcionalidades Principais
 
-### 🧪 `clamav-all`
-- Script auxiliar para validação de ameaças com ClamAV
-- Usado para varredura e análise completa de diretórios do sistema
+- Hardening do SSH (desativa root login, autenticação por senha, etc.)
+- Backup e restauração de configurações
+- Validação e logs detalhados
+- Modularização dos scripts para reutilização e manutenção simplificada
 
-### 🐚 `clamscan_daily.sh`
-- Agendamento de varredura diária com `clamscan`
-- Ideal para uso com `cron`
-- Gera logs e envia alertas (pode ser estendido)
-
-### 📤 `envio_config_clamav.sh`
-- Responsável por aplicar e enviar configurações do ClamAV
-- Inclui ajustes em `freshclam.conf`, `clamd.conf`, etc.
-
----
-
-## 🚀 Como usar
+## 🧪 Como Usar
 
 ```bash
-chmod +x *.sh
-./server_setup.sh
-./hardening_ssh_local.sh
+git clone https://github.com/rafaelmarzulo/Customizacao-hardening.git
+cd Customizacao-hardening
+make install
 ```
 
-> ⚠️ Execute como root (`sudo`) para aplicar configurações no sistema.
+Ou execute scripts diretamente:
 
----
+```bash
+bash scripts/ssh_hardening.sh --help
+```
 
-## ✅ Requisitos
+## 🛠️ Requisitos
 
-- Ubuntu Server 22.04 ou 24.04
-- SSH configurado
-- ClamAV instalado (`apt install clamav`)
+- Distribuição Linux compatível (Ubuntu 20.04+, Debian 11+)
+- Bash 4+
+- Permissões administrativas (sudo)
 
----
+## 🤝 Contribuições
 
-## 📜 Licença
+Contribuições são bem-vindas! Veja o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para mais detalhes.
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+## 📄 Licença
 
----
-
-## 🙋‍♂️ Autor
-
-**Rafael Marzulo**  
-[GitHub: @rafaelmarzulo](https://github.com/rafaelmarzulo)
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
