@@ -23,8 +23,8 @@ help:
 install:
 	@echo "Instalando $(PROJECT_NAME)..."
 	sudo mkdir -p $(INSTALL_DIR) $(CONFIG_DIR) $(LOG_DIR)
-	sudo cp -r scripts/ $(INSTALL_DIR)/
-	sudo cp -r configs/ $(CONFIG_DIR)/
+	sudo cp -r scripts/ Makefile config.yaml $(INSTALL_DIR)/
+	[ -d configs ] && sudo cp -r configs/ $(CONFIG_DIR)/
 	sudo chmod +x $(INSTALL_DIR)/scripts/*/*.sh
 	sudo ln -sf $(INSTALL_DIR)/scripts/hardening/ssh_hardening.sh /usr/local/bin/ssh-hardening
 	sudo ln -sf $(INSTALL_DIR)/scripts/setup/server_setup.sh /usr/local/bin/server-setup
