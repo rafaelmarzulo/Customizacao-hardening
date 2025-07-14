@@ -1,54 +1,75 @@
-
 # 🛡️ Customização e Hardening - Servidores Linux
 
-[![CI](https://github.com/rafaelmarzulo/customizacao-hardening/actions/workflows/CI.yml/badge.svg)](https://github.com/rafaelmarzulo/customizacao-hardening/actions)
+[![CI](https://github.com/rafaelmarzulo/Customizacao-hardening/workflows/CI/badge.svg)](https://github.com/rafaelmarzulo/Customizacao-hardening/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](https://github.com/rafaelmarzulo/customizacao-hardening/releases)
+[![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](https://github.com/rafaelmarzulo/Customizacao-hardening/releases)
 [![Shell](https://img.shields.io/badge/shell-bash-blue.svg)](https://www.gnu.org/software/bash/)
 [![Platform](https://img.shields.io/badge/platform-linux-lightgrey.svg)](https://www.linux.org/)
-[![Security](https://img.shields.io/badge/security-hardening-red.svg)](https://github.com/rafaelmarzulo/customizacao-hardening)
+[![Security](https://img.shields.io/badge/security-hardening-red.svg)](https://github.com/rafaelmarzulo/Customizacao-hardening)
+[![Stars](https://img.shields.io/github/stars/rafaelmarzulo/Customizacao-hardening?style=social)](https://github.com/rafaelmarzulo/Customizacao-hardening/stargazers)
 
-Este repositório contém uma coleção de scripts para fortalecer a segurança e personalização de servidores Linux, com foco em ambientes corporativos.
+> 🚀 **Solução profissional para fortalecer a segurança de servidores Linux com arquitetura modular e práticas de hardening corporativas.**
 
-## 📁 Estrutura do Projeto
+---
 
-- `scripts/`: Scripts organizados por função (backup, hardening, logs, validações, etc.)
-- `configs/`: Arquivos de configuração usados pelos scripts
-- `docs/`: Documentação complementar
-- `tests/`: Casos de teste e exemplos de uso
-- `Makefile`: Automatização de tarefas (instalação, execução, etc.)
+## 📦 Visão Geral
 
-## 🚀 Funcionalidades Principais
+Este projeto automatiza a customização e o hardening de servidores Linux, promovendo:
 
-- Hardening do SSH (desativa root login, autenticação por senha, etc.)
-- Backup e restauração de configurações
-- Validação e logs detalhados
-- Modularização dos scripts para reutilização e manutenção simplificada
+- Aplicação de boas práticas de segurança.
+- Modularização por scripts e categorias (rede, SSH, antivírus etc).
+- Facilidade de manutenção com uso de `Makefile` e `scripts utilitários`.
 
-## 🧪 Como Usar
+---
+
+## 🧰 Estrutura do Projeto
 
 ```bash
-git clone https://github.com/rafaelmarzulo/Customizacao-hardening.git
+.
+├── configs/                # Configurações padrão
+├── docs/                   # Documentação do projeto
+├── scripts/                # Scripts de automação e segurança
+│   ├── hardening/
+│   ├── seguranca/
+│   ├── setup/
+│   └── utils/
+├── tests/                  # Testes automatizados
+├── Makefile                # Comandos automáticos (make install, validate etc.)
+├── README.md               # Este arquivo
+└── .github/workflows/      # CI com GitHub Actions
+```
+
+---
+
+## 🚀 Como Usar
+
+```bash
+# Clone o repositório
+git clone git@github.com:rafaelmarzulo/Customizacao-hardening.git
+
+# Acesse o diretório
 cd Customizacao-hardening
+
+# Execute o Makefile
 make install
 ```
 
-Ou execute scripts diretamente:
-
-```bash
-bash scripts/ssh_hardening.sh --help
-```
-
-## 🛠️ Requisitos
-
-- Distribuição Linux compatível (Ubuntu 20.04+, Debian 11+)
-- Bash 4+
-- Permissões administrativas (sudo)
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Veja o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para mais detalhes.
+---
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Distribuído sob a licença [MIT](https://opensource.org/licenses/MIT). Veja `LICENSE` para mais informações.
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Veja o arquivo [`CONTRIBUTING.md`](CONTRIBUTING.md) para mais detalhes.
+
+---
+
+## 📢 Contato
+
+Desenvolvido por **Rafael Marzulo**  
+📧 [rafaelmarzulo@gmail.com](mailto:rafaelmarzulo@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/rafaelmarzulo/)
