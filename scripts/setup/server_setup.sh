@@ -64,3 +64,44 @@ log_info "Aplicando configurações iniciais do servidor..."
 # Aqui você pode incluir comandos reais de setup (firewall, updates etc)
 
 log_success "Configuração inicial concluída com sucesso!"
+
+# Funções de compatibilidade
+validate_file() { 
+    if [ ! -f "$1" ]; then
+        log_error "Arquivo não encontrado: $1"
+        return 1
+    fi
+    return 0
+}
+
+log_info() { 
+    if command -v info >/dev/null 2>&1; then
+        info "$1"
+    else
+        echo "ℹ️  $1"
+    fi
+}
+
+log_success() { 
+    if command -v success >/dev/null 2>&1; then
+        success "$1"
+    else
+        echo "✅ $1"
+    fi
+}
+
+log_warning() { 
+    if command -v warning >/dev/null 2>&1; then
+        warning "$1"
+    else
+        echo "⚠️  $1"
+    fi
+}
+
+log_error() { 
+    if command -v error >/dev/null 2>&1; then
+        error "$1"
+    else
+        echo "❌ $1"
+    fi
+}

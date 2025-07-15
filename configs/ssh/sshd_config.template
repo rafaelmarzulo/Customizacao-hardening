@@ -1,0 +1,37 @@
+# SSH Hardening Configuration Template
+# Customizacao-hardening project
+
+# Configurações básicas de segurança
+Port 22
+Protocol 2
+PermitRootLogin no
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+# Configurações de timeout
+ClientAliveInterval 300
+ClientAliveCountMax 2
+LoginGraceTime 60
+
+# Configurações de criptografia
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
+KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+
+# Configurações de acesso
+MaxAuthTries 3
+MaxSessions 2
+MaxStartups 2
+AllowUsers ubuntu
+
+# Configurações de log
+SyslogFacility AUTH
+LogLevel INFO
+
+# Desabilitar recursos desnecessários
+X11Forwarding no
+AllowTcpForwarding no
+AllowAgentForwarding no
+PermitTunnel no
+PermitUserEnvironment no

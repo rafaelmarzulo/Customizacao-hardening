@@ -1,0 +1,29 @@
+# FreshClam Configuration Template
+# Customizacao-hardening project
+
+DatabaseDirectory /var/lib/clamav
+UpdateLogFile /var/log/clamav/freshclam.log
+LogVerbose false
+LogSyslog false
+LogFacility LOG_LOCAL6
+LogFileMaxSize 0
+LogRotate true
+LogTime true
+Foreground false
+Debug false
+MaxAttempts 5
+DatabaseOwner clamav
+AllowSupplementaryGroups false
+DNSDatabaseInfo current.cvd.clamav.net
+DatabaseMirror db.local.clamav.net
+DatabaseMirror database.clamav.net
+MaxAttempts 3
+ScriptedUpdates yes
+CompressLocalDatabase no
+Bytecode true
+NotifyClamd /etc/clamav/clamd.conf
+Checks 24
+ConnectTimeout 30
+ReceiveTimeout 0
+TestDatabases yes
+ScriptedUpdates yes
